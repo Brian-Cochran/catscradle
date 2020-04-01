@@ -112,8 +112,9 @@ public class Vector2D {
      * @return is a rotated version of this vector.
      */
     public Vector2D rotate( double angle ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double newX = (this.getX() * Math.cos(angle)) - (this.getY() * Math.sin(angle));
+        double newY = (this.getX() * Math.cos(angle)) - (this.getY() * Math.cos(angle));
+        return new Vector2D( newX, newY );
     } // rotate( double )
     
     /**
