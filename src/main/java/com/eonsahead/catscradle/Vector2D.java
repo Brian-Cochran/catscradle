@@ -68,9 +68,9 @@ public class Vector2D {
      * @return 
      */
     public Vector2D scale( double xFactor, double yFactor ) {
-        double newX = this.getX() * xFactor;
-        double newY = this.getY() * yFactor;
-        return new Vector2D( newX , newY );
+        double xCoord = this.getX() * xFactor;
+        double yCoord = this.getY() * yFactor;
+        return new Vector2D( xCoord , yCoord );
     } // scale( double )
     
     /**
@@ -91,9 +91,9 @@ public class Vector2D {
      * @return a stretched (or contracted) vector.
      */
     public Vector2D scale( double factor ) {
-        double newX = this.getX() * factor;
-        double newY = this.getY() * factor;
-        return new Vector2D( newX, newY );
+        double xCoord = this.getX() * factor;
+        double yCoord = this.getY() * factor;
+        return new Vector2D( xCoord, yCoord );
     } // scale( double )
     
     /**
@@ -112,9 +112,9 @@ public class Vector2D {
      * @return is a rotated version of this vector.
      */
     public Vector2D rotate( double angle ) {
-        double newX = (this.getX() * Math.cos(angle)) - (this.getY() * Math.sin(angle));
-        double newY = (this.getX() * Math.cos(angle)) - (this.getY() * Math.cos(angle));
-        return new Vector2D( newX, newY );
+        double xCoord = (this.getX() * Math.cos(angle)) - (this.getY() * Math.sin(angle));
+        double yCoord = (this.getX() * Math.cos(angle)) - (this.getY() * Math.cos(angle));
+        return new Vector2D( xCoord, yCoord );
     } // rotate( double )
     
     /**
@@ -128,10 +128,12 @@ public class Vector2D {
      * @param deltaY is the distance moved in the vertical direction.
      * @return is a rotated, scaled, and translated version of this vector.
      */
-    public Vector2D rotateScaleTranslate( double angle, double scaleX, 
-            double scaleY, double deltaX, double deltaY ) {
-      
-      return new Vector2D( 0.0, 0.0 );
+    public Vector2D rotateScaleTranslate( double angle, double scaleX, double scaleY, double deltaX, double deltaY ) {
+        Vector2D newVector = this.rotate(angle);
+        newVector = newVector.scale(scaleX, scaleY);
+        Vector2D addVector = new Vector2D(deltaX, deltaY);
+        newVector = newVector.add(addVector);
+        return newVector;
     } // rotateScaleTranslate( double, double, double, double, double )
     
     /**
