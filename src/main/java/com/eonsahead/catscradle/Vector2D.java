@@ -30,7 +30,8 @@ public class Vector2D {
      * @param y is the y coordinate of the point.
      */
     public Vector2D(double x, double y) {
-
+        this.x = x;
+        this.y = y;
     } // Vector2D( double, double )
 
     /**
@@ -50,8 +51,9 @@ public class Vector2D {
      * @return the sum of this vector and the other vector.
      */
     public Vector2D add( Vector2D v ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double xCoord = this.getX() + v.getX();
+        double yCoord = this.getY() + v.getY();
+        return new Vector2D(xCoord, yCoord);
     } // add (Vector2D )
     
     /**
@@ -66,8 +68,9 @@ public class Vector2D {
      * @return 
      */
     public Vector2D scale( double xFactor, double yFactor ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double newX = this.getX() * xFactor;
+        double newY = this.getY() * yFactor;
+        return new Vector2D( newX , newY );
     } // scale( double )
     
     /**
@@ -88,8 +91,9 @@ public class Vector2D {
      * @return a stretched (or contracted) vector.
      */
     public Vector2D scale( double factor ) {
-
-      return new Vector2D( 0.0, 0.0 );
+        double newX = this.getX() * factor;
+        double newY = this.getY() * factor;
+        return new Vector2D( newX, newY );
     } // scale( double )
     
     /**
@@ -147,8 +151,9 @@ public class Vector2D {
      * components.
      */
     public double dot( Vector2D v ) {
-
-      return 0.0;
+        double xProduct = this.getX() * v.getX();
+        double yProduct = this.getY() * v.getY();
+        return xProduct + yProduct;
     } // dot( Vector2D )
     
     /**
@@ -168,8 +173,7 @@ public class Vector2D {
      * @return the length of the vector.
      */
     public double magnitude() {
-
-      return 0.0;
+        return Math.sqrt(this.dot(this));
     } // magnitude()
     
     /**
@@ -180,8 +184,7 @@ public class Vector2D {
      * @return the value of the vector's x component. 
      */
     public double getX() {
-//        return this.x;
-      return 0.0;
+        return this.x;
     } // getX()
     
      /**
@@ -192,8 +195,7 @@ public class Vector2D {
      * @return the value of the vector's y component. 
      */
     public double getY() {
-
-      return 0.0;
+        return this.y;
     } // getY()
     
     /**
@@ -205,8 +207,7 @@ public class Vector2D {
      */
     @Override
     public String toString() {
-
-      return "";
+        return "(" + getX() + ", " + getY() + ")";
     } // toString()
     
     /**
